@@ -9,7 +9,6 @@
 		};
 
 		this._updateTheories = function () {
-			console.log(theoriesModel.getTheories());
 			this.theories = theoriesModel.getTheories();
 			this._sortTheories();		
 		};
