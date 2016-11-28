@@ -28,22 +28,14 @@ function TheoriesModel() {
 }
 
 TheoriesModel.prototype = {
-	getTheories: function (method, url) {
-		var request = new XMLHttpRequest();
-		request.addEventListener("load", function () {
-			this._theories = _.cloneDeep(request.responseText);
-			// return _.cloneDeep(this._theories);
-			// this.trigger("change");
-		}.bind(this));
-
-		request.addEventListener("error", function (err) {
-			console.log(err)
-		});
-
-		request.open(method, url);
-		request.send();
-
-		return _.cloneDeep(this._theories);
+	getTheories: function () {
+		this._httpRequest("GET", "http://localhost:3000/theories")
+			.then(function (response) {
+				this._theories = _.cloneDeep(JSON.parse(response));
+				}.bind(this))
+			.then(function () {
+				return _.cloneDeep(this._theories);
+				}.bind(this));
 	},
 	getTheoryById: function (id) {
 		return _.cloneDeep(this._getTheoryById(id));
@@ -68,6 +60,23 @@ TheoriesModel.prototype = {
 				return i;
 			}
 		}
+	},
+	_httpRequest: function (method, url, body) {
+		return new Promise(function (resolve, reject) {
+			var request = new XMLHttpRequest();
+	
+			request.addEventListener("load", function () {
+				resolve(request.responseText);
+			}.bind(this));
+	
+			request.addEventListener("error", function (err) {
+				console.log(err);
+				reject(err);
+			});
+	
+			request.open(method, url);
+			request.send(body);
+		});
 	}
 };
 
