@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'main/new'
 
   get 'main/create'

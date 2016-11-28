@@ -14,15 +14,15 @@ function TheoriesModel() {
 			id: 2,
 			content: "Charolette Hale is also a host",
 			authorName: "Tebo",
-			upvotesCount: 500,
-			downvotesCount: 100
+			upvotesCount: 3,
+			downvotesCount: 7
 		},
 		{ 
 			id: 3,
 			content: "Maeve will escape",
 			authorName: "Gerry",
-			upvotesCount: 900,
-			downvotesCount: 600
+			upvotesCount: 1,
+			downvotesCount: 14
 		},
 	];
 }
