@@ -7,8 +7,8 @@ function TheoriesModel() {
 			id: 1,
 			content: "Arnold is not real",
 			authorName: "Sarah",
-			upvotesCount: 100,
-			downvotesCount: 300
+			upvotesCount: 10,
+			downvotesCount: 5
 		},
 		{ 
 			id: 2,
