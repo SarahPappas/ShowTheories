@@ -39,6 +39,10 @@ TheoriesModel.prototype = {
 		this._theories[index] = _.cloneDeep(theory);
 		this.trigger("change");
 	},
+	addTheory: function (theory) {
+		this._theories.push(_.cloneDeep(theory));
+		this.trigger("change");
+	},
 	_getTheoryById: function (id) {
 		var index = this._getTheoryIndexById(id);
 		return this._theories[index];

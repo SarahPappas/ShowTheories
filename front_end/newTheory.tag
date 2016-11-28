@@ -1,6 +1,6 @@
 <newTheory>
 	<div ref="test">Add your latest theory:</div>
-	<form onsubmit={ add }>
+	<form>
 		<div class="new-theory-line">
 			<div>Your Theory:</div>
 			<textarea ref="content" class="new-theory-content"></textarea>
@@ -9,15 +9,19 @@
 			<div>Who's theory is this?</div>
 			<input type="text" ref="authorName">
 		</div>
-		<div type="submit new-theory-line" class="button">Add</div>
+		<div class="button" onclick={ add }>Add</div>
 	</form>
 
 	<script type="text/javascript">
-
 		this.add = function (e) {
 			e.preventDefault();
-			var content = this.refs.content.value;
-			var author = this.refs.authorName.value;
+			var newTheory = {};
+			newTheory.content = this.refs.content.value;
+			newTheory.authorName = this.refs.authorName.value;
+			newTheory.upvotesCount = 0;
+			newTheory.downvotesCount = 0;
+			console.log(newTheory);
+			theoriesModel.addTheory(newTheory);
 		}.bind(this);
 	</script>
 </newTheory>
