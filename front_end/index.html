@@ -1,11 +1,18 @@
 <html>
   <head>
     <title>Hello Riot.</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Lato" rel="stylesheet">
   </head>
   <body>
-    <!-- place the custom tag anywhere inside the body -->
-    <newTheory></newTheory>
-    <theoryList></theoryList>
+    <div class="background-image">
+      <div class="title">West World Theories</div>
+      <!-- place the custom tag anywhere inside the body -->
+      <newTheory class="new-theory"></newTheory>
+      <div class="theories">
+        <theoryList class="theories"></theoryList>
+      </div>
+    </div>
     <!-- include the tag -->
     <script type="riot/tag" src="theoryList.tag"></script>
     <script type="riot/tag" src="theory.tag"></script>

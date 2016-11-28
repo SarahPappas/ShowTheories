@@ -12,7 +12,7 @@ function TheoriesModel() {
 		},
 		{ 
 			id: 2,
-			content: "Ms. Hayes is also a host",
+			content: "Charolette Hale is also a host",
 			authorName: "Tebo",
 			upvotesCount: 500,
 			downvotesCount: 100

@@ -1,0 +1,72 @@
+body {
+	width: 100%
+	height: 100%;
+	font-family: 'Lato', sans-serif;
+	font-size: 24px;
+	margin: 0;
+}
+
+.background-image {
+	width: 100%;
+	height: 100%;
+	background-image: url(west-background.jpg);
+	background-size: cover;
+}
+
+.theories {
+	overflow: scroll;
+	height: 6	00px;
+}
+
+.theory {
+	text-align: center;
+	font-size: 32px;	
+	padding: 25px;
+}
+
+.title {
+	padding: 50px;
+	font-family: 'Bungee', cursive;
+	font-size: 72px;
+	text-align: center;
+}
+
+.new-theory {
+	position: absolute;
+	top: 30%;
+	left: 100px;
+	padding: 25px;
+	border: solid 1px black;
+	text-align: center;
+}
+
+.button {
+	display: inline-block;
+	border: solid 1px black;
+	padding: 5px 15px;
+	font-size: 20px;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: rgba(144, 81, 76, 1);
+}
+
+.votes {
+	display: inline-block;
+	padding: 15px;
+}
+
+.author {
+	font-style: italic;
+	font-size: 16px;
+}
+
+.new-theory-line {
+	margin: 15px;
+}
+
+.new-theory-content {
+	width: 100%;
+	height: 100px;
+}
