@@ -1,2 +1,0 @@
-class Theory < ApplicationRecord
-end
