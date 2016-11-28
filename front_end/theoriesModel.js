@@ -28,7 +28,21 @@ function TheoriesModel() {
 }
 
 TheoriesModel.prototype = {
-	getTheories: function () {
+	getTheories: function (method, url) {
+		var request = new XMLHttpRequest();
+		request.addEventListener("load", function () {
+			this._theories = _.cloneDeep(request.responseText);
+			// return _.cloneDeep(this._theories);
+			// this.trigger("change");
+		}.bind(this));
+
+		request.addEventListener("error", function (err) {
+			console.log(err)
+		});
+
+		request.open(method, url);
+		request.send();
+
 		return _.cloneDeep(this._theories);
 	},
 	getTheoryById: function (id) {
