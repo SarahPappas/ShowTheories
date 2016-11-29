@@ -40,12 +40,11 @@ TheoriesModel.prototype = {
 		var index = this._getTheoryIndexById(theory.id);
 		this._theories[index] = _.cloneDeep(theory);
 		this.trigger("change");
+		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id, JSON.stringify(theory));
 	},
 	addTheory: function (theory) {
 		this._theories.push(_.cloneDeep(theory));
-		console.log(theory);
 		this.trigger("change");
-		var data = {"theory": theory}
 		this._httpRequest("POST", "http://localhost:3000/theories", JSON.stringify(theory));
 		//function makes request
 		//if request succeeds do nothing because we optimistically updated
