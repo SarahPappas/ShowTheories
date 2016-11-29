@@ -40,7 +40,12 @@ TheoriesModel.prototype = {
 		}.bind(this));
 	},
 	getTheoryById: function (id) {
-		return _.cloneDeep(this._getTheoryById(id));
+		return new Promise(function (resolve, reject) {
+			this._httpRequest("GET", "http://localhost:3000/theories/"+id)
+				.then(function (response) {
+					resolve(_.cloneDeep(JSON.parse(response)));
+				})
+		}.bind(this));
 	},
 	updateTheory: function (theory) {
 		var index = this._getTheoryIndexById(theory.id);
