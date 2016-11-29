@@ -25,27 +25,16 @@ function TheoriesModel() {
 			downvotesCount: 14
 		},
 	];
+
+	this.reloadTheories();
 }
 
 TheoriesModel.prototype = {
 	getTheories: function () {
-		return new Promise(function (resolve, reject) {
-			this._httpRequest("GET", "http://localhost:3000/theories")
-				.then(function (response) {
-					this._theories = _.cloneDeep(JSON.parse(response));
-					}.bind(this))
-				.then(function () {
-					resolve(_.cloneDeep(this._theories));
-					}.bind(this));
-		}.bind(this));
+		return _.cloneDeep(this._theories);
 	},
 	getTheoryById: function (id) {
-		return new Promise(function (resolve, reject) {
-			this._httpRequest("GET", "http://localhost:3000/theories/"+id)
-				.then(function (response) {
-					resolve(_.cloneDeep(JSON.parse(response)));
-				})
-		}.bind(this));
+		return _.cloneDeep(this._getTheoryById(id));
 	},
 	updateTheory: function (theory) {
 		var index = this._getTheoryIndexById(theory.id);
@@ -55,6 +44,13 @@ TheoriesModel.prototype = {
 	addTheory: function (theory) {
 		this._theories.push(_.cloneDeep(theory));
 		this.trigger("change");
+	},
+	reloadTheories: function () {
+		this._httpRequest("GET", "http://localhost:3000/theories")
+			.then(function (responseText) {
+				this._theories = JSON.parse(responseText);
+				this.trigger("change");
+			}.bind(this));
 	},
 	_getTheoryById: function (id) {
 		var index = this._getTheoryIndexById(id);
