@@ -9,13 +9,26 @@
 		};
 
 		this._updateTheories = function () {
-			this.theories = theoriesModel.getTheories();
-			this._sortTheories();		
+			return new Promise(function (resolve, reject) {
+				theoriesModel.getTheories()
+					.then(function (response) {
+						return this.theories = response;
+						}.bind(this))
+					.then(function () {
+						this._sortTheories();
+						}.bind(this))
+					.then(function () {
+						this.update();
+					}.bind(this));
+			}.bind(this));
 		};
 
 		theoriesModel.on("change", function () {
-			this._updateTheories();
-			this.update();
+			this._updateTheories()
+				.then(function () {
+					console.log("here");
+					return this.update();
+				}.bind(this));
 		}.bind(this));
 
 		this._updateTheories();

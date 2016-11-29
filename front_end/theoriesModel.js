@@ -29,13 +29,15 @@ function TheoriesModel() {
 
 TheoriesModel.prototype = {
 	getTheories: function () {
-		this._httpRequest("GET", "http://localhost:3000/theories")
-			.then(function (response) {
-				this._theories = _.cloneDeep(JSON.parse(response));
-				}.bind(this))
-			.then(function () {
-				return _.cloneDeep(this._theories);
-				}.bind(this));
+		return new Promise(function (resolve, reject) {
+			this._httpRequest("GET", "http://localhost:3000/theories")
+				.then(function (response) {
+					this._theories = _.cloneDeep(JSON.parse(response));
+					}.bind(this))
+				.then(function () {
+					resolve(_.cloneDeep(this._theories));
+					}.bind(this));
+		}.bind(this));
 	},
 	getTheoryById: function (id) {
 		return _.cloneDeep(this._getTheoryById(id));
