@@ -4,7 +4,6 @@ class TheoriesController < ApplicationController
   # GET /theories
   def index
     @theories = Theory.all
-
     render json: @theories
   end
 
@@ -15,6 +14,7 @@ class TheoriesController < ApplicationController
 
   # POST /theories
   def create
+    puts params.inspect
     @theory = Theory.new(theory_params)
 
     if @theory.save

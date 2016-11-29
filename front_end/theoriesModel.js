@@ -43,7 +43,12 @@ TheoriesModel.prototype = {
 	},
 	addTheory: function (theory) {
 		this._theories.push(_.cloneDeep(theory));
+		console.log(theory);
 		this.trigger("change");
+		var data = {"theory": theory}
+		this._httpRequest("POST", "http://localhost:3000/theories", JSON.stringify(theory));
+		//function makes request
+		//if request succeeds do nothing because we optimistically updated
 	},
 	reloadTheories: function () {
 		this._httpRequest("GET", "http://localhost:3000/theories")
@@ -76,8 +81,12 @@ TheoriesModel.prototype = {
 				console.log(err);
 				reject(err);
 			});
-	
+			
 			request.open(method, url);
+
+			if (body) {
+				request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			}
 			request.send(body);
 		});
 	}
