@@ -1,5 +1,5 @@
-<theory>
-	<div class="theory">{ opts.data.content }</div>
+<theory class="theory">
+	<div>{ opts.data.content }</div>
 	<div class="author">- { opts.data.authorName }</div>
 	<div>
 		<div onclick={ upvote } class="button">upvote</div>
@@ -10,6 +10,7 @@
 			{ opts.data.downvotesCount }
 		</div>
 		<div onclick={ downvote } class="button">downvote</div>
+		<hr>
 	</div>
 
 	<script type="text/javascript">

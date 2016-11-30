@@ -1,6 +1,11 @@
 <theoryList class="theories { hidden: isHidden }">
-	<div onclick={ changeView } class="button-main">Add</div>
-	<theory each={ theories } data={ this } class="theory"></theory>
+	<div class="subpage-title">Read or 
+		<div onclick={ changeView } class="button-main">Add</div>
+	</div>
+	<hr>
+	<div class="theories-container">
+		<theory each={ theories } data={ this }></theory>
+	</div>
 
 	<script type="text/javascript">
 		this.isHidden = activeViewModel.isHidden("theoryList");
