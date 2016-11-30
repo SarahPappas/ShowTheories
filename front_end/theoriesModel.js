@@ -8,21 +8,24 @@ function TheoriesModel() {
 			content: "Arnold is not real",
 			authorName: "Sarah",
 			upvotesCount: 10,
-			downvotesCount: 5
+			downvotesCount: 5,
+			showTitle: "Westworld"
 		},
 		{ 
 			id: 2,
 			content: "Charolette Hale is also a host",
 			authorName: "Tebo",
 			upvotesCount: 3,
-			downvotesCount: 7
+			downvotesCount: 7,
+			showTitle: "Westworld"
 		},
 		{ 
 			id: 3,
 			content: "Maeve will escape",
 			authorName: "Gerry",
 			upvotesCount: 1,
-			downvotesCount: 14
+			downvotesCount: 14,
+			showTitle: "Westworld"
 		},
 	];
 

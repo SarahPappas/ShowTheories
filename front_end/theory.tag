@@ -1,4 +1,5 @@
 <theory class="theory">
+	<div>{ opts.data.showTitle }</div>
 	<div>{ opts.data.content }</div>
 	<div class="author">- { opts.data.authorName }</div>
 	<div>

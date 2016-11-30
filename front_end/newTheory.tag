@@ -2,6 +2,10 @@
 	<div class="subpage-title">Add your latest theory</div>
 	<form class="new-theory-form">
 		<div>
+			<div class="new-theory-line">What show?</div>
+			<input type="text" ref="showTitle">
+		</div>
+		<div>
 			<div class="new-theory-line">Your Theory:</div>
 			<textarea ref="content" class="new-theory-content"></textarea>
 		</div>
@@ -22,9 +26,9 @@
 			var newTheory = {};
 			newTheory.content = this.refs.content.value;
 			newTheory.authorName = this.refs.authorName.value;
+			newTheory.showTitle = this.refs.showTitle.value;
 			newTheory.upvotesCount = 0;
 			newTheory.downvotesCount = 0;
-			console.log(newTheory);
 			theoriesModel.addTheory(newTheory);
 			this.changeView();
 		}.bind(this);
