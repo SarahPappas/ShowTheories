@@ -40,14 +40,26 @@ TheoriesModel.prototype = {
 		var index = this._getTheoryIndexById(theory.id);
 		this._theories[index] = _.cloneDeep(theory);
 		this.trigger("change");
-		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id, JSON.stringify(theory));
+		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id, JSON.stringify(theory))
+			.then(function (response) {
+				var errorMsg = JSON.parse(response).error;
+				if(errorMsg) {
+					this.trigger("error", errorMsg);
+					this.reloadTheories();
+				}
+			}.bind(this));
 	},
 	addTheory: function (theory) {
 		this._theories.push(_.cloneDeep(theory));
 		this.trigger("change");
-		this._httpRequest("POST", "http://localhost:3000/theories", JSON.stringify(theory));
-		//function makes request
-		//if request succeeds do nothing because we optimistically updated
+		this._httpRequest("POST", "http://localhost:3000/theories", JSON.stringify(theory))
+			.then(function (response) {
+				var errorMsg = JSON.parse(response).error;
+				if(errorMsg) {
+					this.trigger("error", errorMsg);
+					this.reloadTheories();
+				}
+			}.bind(this));
 	},
 	reloadTheories: function () {
 		this._httpRequest("GET", "http://localhost:3000/theories")

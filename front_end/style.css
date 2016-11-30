@@ -1,16 +1,40 @@
+@font-face {
+	font-family: OstrichSansLight;
+	src: url(/fonts/ostrich-sans-light.woff) format('woff');
+}
+
 body {
 	width: 100%;
 	height: 900px;
-	font-family: 'Lato', sans-serif;
+	color: white;
+	font-family: OstrichSansLight, arial;
 	font-size: 24px;
 	margin: 0;
 }
 
-.background-image {
+.title {
+	padding-top: .25em;
+	font-family: OstrichSansLight, arial;
+	font-size: 240px;
+	text-align: center;
+}
+
+.background {
 	width: 100%;
 	height: 100%;
-	background-image: url(west-background.jpg);
+	background-color: rgba(0, 0, 0, 1);
 	background-size: cover;
+}
+
+.quote {
+	text-align: center;
+	font-style: italic;
+	font-size: 120px;
+	padding: .5em 1em;
+}
+.quote-author {
+	font-size: 18px;
+	font-style: none;
 }
 
 .theories {
@@ -24,25 +48,18 @@ body {
 	padding: 25px;
 }
 
-.title {
-	padding: 50px;
-	font-family: 'Bungee', cursive;
-	font-size: 72px;
-	text-align: center;
-}
-
 .new-theory {
 	position: absolute;
 	top: 30%;
 	left: 100px;
 	padding: 25px;
-	border: solid 1px black;
+	border: solid 1px white;
 	text-align: center;
 }
 
 .button {
 	display: inline-block;
-	border: solid 1px black;
+	border: solid 1px white;
 	padding: 5px 15px;
 	font-size: 20px;
 }
@@ -58,6 +75,7 @@ body {
 }
 
 .author {
+	font-family: 
 	font-style: italic;
 	font-size: 16px;
 }

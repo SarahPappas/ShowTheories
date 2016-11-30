@@ -14,6 +14,10 @@
 			this.update();
 		};
 
+		theoriesModel.on("error", function (errorMsg) {
+			window.alert("Unfortunately there has been an error: " + errorMsg);
+		});
+
 		theoriesModel.on("change", function () {
 			this._updateTheories();
 		}.bind(this));
