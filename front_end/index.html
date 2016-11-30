@@ -6,10 +6,10 @@
   </head>
   <body>
     <div class="background">
-      <home></home>
       <!-- place the custom tag anywhere inside the body -->
-      <!-- <newTheory class="new-theory"></newTheory> -->
-      <theoryList class="theories"></theoryList>
+      <home></home>
+      <newTheory></newTheory>
+      <theoryList></theoryList>
     </div>
     <!-- include the tag -->
     <script type="riot/tag" src="home.tag"></script>
@@ -28,6 +28,6 @@
     <!-- mount the tag -->
     <script>riot.mount("home");</script>
     <script>riot.mount("theoryList");</script>
-    <!-- <script>riot.mount("newTheory");</script> -->
+    <script>riot.mount("newTheory");</script>
   </body>
 </html>

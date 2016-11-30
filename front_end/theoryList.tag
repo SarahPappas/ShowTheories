@@ -1,4 +1,5 @@
 <theoryList class="theories { hidden: isHidden }">
+	<div onclick={ changeView } class="button-main">Add</div>
 	<theory each={ theories } data={ this } class="theory"></theory>
 
 	<script type="text/javascript">
@@ -23,6 +24,10 @@
 		theoriesModel.on("change", function () {
 			this._updateTheories();
 		}.bind(this));
+
+		this.changeView = function () {
+ 			activeViewModel.changeActiveView("newTheory");
+		};
 
 		activeViewModel.on("viewChange", function() {
 			this.isHidden = activeViewModel.isHidden("theoryList");

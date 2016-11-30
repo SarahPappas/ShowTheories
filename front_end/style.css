@@ -64,6 +64,13 @@ body {
   }
 }
 
+.subpage-title {
+	font-size: 60px;
+	letter-spacing: .05em;
+	text-align: center;
+	padding: 1em;
+}
+
 .theories {
 	overflow: scroll;
 	height: 600px;
@@ -73,15 +80,6 @@ body {
 	text-align: center;
 	font-size: 32px;	
 	padding: 25px;
-}
-
-.new-theory {
-	position: absolute;
-	top: 30%;
-	left: 100px;
-	padding: 25px;
-	border: solid 1px white;
-	text-align: center;
 }
 
 .button {
@@ -107,15 +105,35 @@ body {
 	font-size: 16px;
 }
 
+.new-theory-form {
+	width: 400px;
+	height: 400px;
+	padding: 25px;
+	font-size: 32px;
+	border: solid 2px white;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.new-theory-container {
+	width: 100%;
+	height: 100%;
+}
+
 .new-theory-line {
-	margin: 15px;
+	margin-top: 15px;
 }
 
 .new-theory-content {
-	width: 100%;
-	height: 100px;
+	width: 300px;
+	height: 150px;
 }
 
 .hidden {
-	visibility: hidden;
+	display: none;
+}
+
+.back {
+	border: none;
+	margin-top: .5em;
 }
