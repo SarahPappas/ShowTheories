@@ -6,23 +6,13 @@
   </head>
   <body>
     <div class="background">
-      <div class="title">ShowTheories</div>
-      <div class="quote">
-        <div>
-          "The best way to predict the future is to create it."
-        </div>
-        <div class="quote-author">
-          - Peter Drucker
-        </div>
-      </div>
-      <div class="button-main">Peruse</div>
+      <home></home>
       <!-- place the custom tag anywhere inside the body -->
-      <!-- <newTheory class="new-theory"></newTheory>
-      <div class="theories">
-        <theoryList class="theories"></theoryList>
-      </div> -->
+      <!-- <newTheory class="new-theory"></newTheory> -->
+      <theoryList class="theories"></theoryList>
     </div>
     <!-- include the tag -->
+    <script type="riot/tag" src="home.tag"></script>
     <script type="riot/tag" src="theoryList.tag"></script>
     <script type="riot/tag" src="theory.tag"></script>
     <script type="riot/tag" src="newTheory.tag"></script>
@@ -33,8 +23,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>
     <!-- include models -->
     <script type="text/javascript" src="theoriesModel.js"></script>
+    <script type="text/javascript" src="activeViewModel.js"></script>
+
     <!-- mount the tag -->
-    <script>riot.mount("newTheory");</script>
+    <script>riot.mount("home");</script>
     <script>riot.mount("theoryList");</script>
+    <!-- <script>riot.mount("newTheory");</script> -->
   </body>
 </html>
