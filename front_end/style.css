@@ -15,7 +15,7 @@ body {
 .title {
 	padding-top: .25em;
 	font-family: OstrichSansLight, arial;
-	font-size: 240px;
+	font-size: 200px;
 	text-align: center;
 }
 
@@ -29,12 +29,37 @@ body {
 .quote {
 	text-align: center;
 	font-style: italic;
-	font-size: 120px;
-	padding: .5em 1em;
+	font-size: 100px;
+	padding: .4em 1em;
 }
+
 .quote-author {
 	font-size: 18px;
 	font-style: none;
+}
+
+.button-main {
+	font-size: 60px;
+	border: dotted white 2px;
+	width: 2em;
+	padding: .15em;
+	padding-top: .25em;
+	padding-left: .20em;
+	margin: 0 auto;
+	text-align: center;
+	animation: pulse 10s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    border-color: #001F3F;
+  }
+  50% {
+    border-color: #FF4136;
+  }
+  100% {
+  	border-color: #001F3F;
+  }
 }
 
 .theories {
