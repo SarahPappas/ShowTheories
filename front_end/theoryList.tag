@@ -1,7 +1,7 @@
 <theoryList class="theories { hidden: isHidden }">
 	<div class="subpage-title">Read or 
 		<div onclick={ changeView } class="button-main">Add</div>
-		<input ref="input" onchange={ searchTheories } placeholder="search" class="new-theory-line"></input>
+		<input ref="input" oninput={ searchTheories } placeholder="search by show" class="new-theory-line"></input>
 		<!-- <button onchange={ searchTheories }>submit</button> -->
 	</div>
 	<hr>
