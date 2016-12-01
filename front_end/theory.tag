@@ -19,14 +19,14 @@
 			e.preventUpdate = true;
 			var theory = theoriesModel.getTheoryById(opts.data.id);
 			theory.upvotesCount++;
-			theoriesModel.updateTheory(theory);
+			theoriesModel.updateTheory(theory, "upvote");
 		};
 
 		this.downvote = function (e) {
 			e.preventUpdate = true;
 			var theory = theoriesModel.getTheoryById(opts.data.id);
 			theory.downvotesCount++;
-			theoriesModel.updateTheory(theory);
+			theoriesModel.updateTheory(theory, "downvote");
 		};
 	</script>
 </theory>

@@ -39,11 +39,11 @@ TheoriesModel.prototype = {
 	getTheoryById: function (id) {
 		return _.cloneDeep(this._getTheoryById(id));
 	},
-	updateTheory: function (theory) {
+	updateTheory: function (theory, vote) {
 		var index = this._getTheoryIndexById(theory.id);
 		this._theories[index] = _.cloneDeep(theory);
 		this.trigger("change");
-		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id, JSON.stringify(theory))
+		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id+"/"+vote, JSON.stringify(theory))
 			.then(function (response) {
 				var errorMsg = JSON.parse(response).error;
 				if(errorMsg) {

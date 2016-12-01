@@ -1,5 +1,5 @@
 class TheoriesController < ApplicationController
-  before_action :set_theory, only: [:show, :update, :destroy]
+  before_action :set_theory, only: [:show, :update, :destroy, :upvote, :downvote]
 
   # GET /theories
   def index
@@ -24,9 +24,27 @@ class TheoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /theories/1
-  def update
-    if @theory.update(theory_params)
+  # # PATCH/PUT /theories/1
+  # def update
+  #   if @theory.update(theory_params)
+  #     render json: @theory
+  #   else
+  #     render json: @theory.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  # PUT /theories/1/upvote
+  def upvote
+    if @theory.increment!(:upvotesCount, 1)
+      render json: @theory
+    else
+      render json: @theory.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PUT /theories/1/upvote
+  def downvote
+    if @theory.increment!(:downvotesCount, 1)
       render json: @theory
     else
       render json: @theory.errors, status: :unprocessable_entity
