@@ -30,6 +30,7 @@
 
 		theoriesModel.on("change", function () {
 			this._updateTheories();
+			this.searchTheories();
 		}.bind(this));
 
 		this.changeView = function () {
