@@ -24,15 +24,6 @@ class TheoriesController < ApplicationController
     end
   end
 
-  # # PATCH/PUT /theories/1
-  # def update
-  #   if @theory.update(theory_params)
-  #     render json: @theory
-  #   else
-  #     render json: @theory.errors, status: :unprocessable_entity
-  #   end
-  # end
-
   # PUT /theories/1/upvote
   def upvote
     if @theory.increment!(:upvotesCount, 1)
