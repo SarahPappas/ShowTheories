@@ -30,6 +30,8 @@ function TheoriesModel() {
 	];
 
 	this.reloadTheories();
+
+	this.isLoading = false;
 }
 
 TheoriesModel.prototype = {
@@ -40,15 +42,21 @@ TheoriesModel.prototype = {
 		return _.cloneDeep(this._getTheoryById(id));
 	},
 	updateTheory: function (theory, vote) {
+		if (this.isLoading) {
+			this.trigger("error", "you've alredy voted");
+			return;
+		}
 		var index = this._getTheoryIndexById(theory.id);
 		this._theories[index] = _.cloneDeep(theory);
 		this.trigger("change");
 		this._httpRequest("PUT", "http://localhost:3000/theories/"+theory.id+"/"+vote, JSON.stringify(theory))
 			.then(function (response) {
+				console.log(response);
 				var errorMsg = JSON.parse(response).error;
 				if(errorMsg) {
 					this.trigger("error", errorMsg);
 					this.reloadTheories();
+					this.isLoading = false;
 				}
 			}.bind(this));
 	},
@@ -57,6 +65,7 @@ TheoriesModel.prototype = {
 		this.trigger("change");
 		this._httpRequest("POST", "http://localhost:3000/theories", JSON.stringify(theory))
 			.then(function (response) {
+				console.log(JSON.parse(response));
 				var errorMsg = JSON.parse(response).error;
 				if(errorMsg) {
 					this.trigger("error", errorMsg);
@@ -85,6 +94,7 @@ TheoriesModel.prototype = {
 	},
 	_httpRequest: function (method, url, body) {
 		return new Promise(function (resolve, reject) {
+			this.isLoading = true;
 			var request = new XMLHttpRequest();
 	
 			request.addEventListener("load", function () {

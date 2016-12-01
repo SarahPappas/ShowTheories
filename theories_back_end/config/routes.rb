@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	resources :theories
+	resources :votes
+
 
 	put "/theories/:id/upvote", to: "theories#upvote"
 

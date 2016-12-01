@@ -1,5 +1,6 @@
 class TheoriesController < ApplicationController
   before_action :set_theory, only: [:show, :update, :destroy, :upvote, :downvote]
+  before_action :set_vote, only: [:upvote, :downvote]
 
   # GET /theories
   def index
@@ -14,7 +15,6 @@ class TheoriesController < ApplicationController
 
   # POST /theories
   def create
-    puts params.inspect
     @theory = Theory.new(theory_params)
 
     if @theory.save
@@ -26,10 +26,21 @@ class TheoriesController < ApplicationController
 
   # PUT /theories/1/upvote
   def upvote
-    if @theory.increment!(:upvotesCount, 1)
-      render json: @theory
+    if @vote
+      # render json: @vote
+      # render json: @vote, status: :error, location: @vote
+      # render json: @theory.errors, status: "You've already voted"
     else
-      render json: @theory.errors, status: :unprocessable_entity
+      @vote = Vote.new(theory_id: params[:id], ipAddress: request.remote_ip)
+      if @vote.save
+        if @theory.increment!(:upvotesCount, 1)
+          render json: @theory
+        else
+          render json: @theory.errors, status: :unprocessable_entity
+        end
+      else
+        # json: @vote.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -48,6 +59,11 @@ class TheoriesController < ApplicationController
   end
 
   private
+    def set_vote
+      ip = request.remote_ip
+      @vote = Vote.where(:theory_id=>params[:id]).where(:ipAddress=>ip)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_theory
       @theory = Theory.find(params[:id])
