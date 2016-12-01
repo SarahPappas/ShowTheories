@@ -1,6 +1,8 @@
 <theoryList class="theories { hidden: isHidden }">
 	<div class="subpage-title">Read or 
 		<div onclick={ changeView } class="button-main">Add</div>
+		<input ref="input" onchange={ searchTheories } placeholder="search" class="new-theory-line"></input>
+		<!-- <button onchange={ searchTheories }>submit</button> -->
 	</div>
 	<hr>
 	<div class="theories-container">
@@ -39,6 +41,15 @@
 			this.update();
 			console.log("theoryList hidden?", this.isHidden);
 		}.bind(this));
+
+		this.searchTheories = function () {
+			this.theories = theoriesModel.getTheories();
+			var input = this.refs.input.value.toLowerCase();
+			this.theories = _.filter(this.theories, function(theory) { 
+				return _.startsWith(theory.showTitle, input);
+			});
+			this.update();
+		}.bind(this);
 
 		this._updateTheories();
 	</script>

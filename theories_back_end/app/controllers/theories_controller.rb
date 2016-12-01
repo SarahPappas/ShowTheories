@@ -46,6 +46,6 @@ class TheoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def theory_params
-      params.require(:theory).permit(:content, :authorName, :upvotesCount, :downvotesCount)
+      params.require(:theory).permit(:content, :authorName, :showTitle, :upvotesCount, :downvotesCount)
     end
 end

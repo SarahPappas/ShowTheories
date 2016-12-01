@@ -10,6 +10,7 @@ body {
 	font-family: OstrichSansLight, arial;
 	font-size: 24px;
 	margin: 0;
+	overflow: hidden;
 }
 
 .title {
@@ -112,8 +113,8 @@ body {
 }
 
 .new-theory-form {
-	width: 400px;
-	height: 400px;
+	width: 425px;
+	height: 425px;
 	padding: 25px;
 	font-size: 32px;
 	border: solid 2px white;
@@ -132,7 +133,7 @@ body {
 
 .new-theory-content {
 	width: 300px;
-	height: 150px;
+	height: 100px;
 }
 
 .hidden {

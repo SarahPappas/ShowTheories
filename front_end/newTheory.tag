@@ -26,7 +26,7 @@
 			var newTheory = {};
 			newTheory.content = this.refs.content.value;
 			newTheory.authorName = this.refs.authorName.value;
-			newTheory.showTitle = this.refs.showTitle.value;
+			newTheory.showTitle = this.refs.showTitle.value.toLowerCase();
 			newTheory.upvotesCount = 0;
 			newTheory.downvotesCount = 0;
 			theoriesModel.addTheory(newTheory);
