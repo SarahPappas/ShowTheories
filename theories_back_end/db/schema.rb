@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130211919) do
+ActiveRecord::Schema.define(version: 20161201171257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,4 +25,13 @@ ActiveRecord::Schema.define(version: 20161130211919) do
     t.string   "showTitle"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "theory_id"
+    t.string   "ipAddress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theory_id"], name: "index_votes_on_theory_id", using: :btree
+  end
+
+  add_foreign_key "votes", "theories"
 end
