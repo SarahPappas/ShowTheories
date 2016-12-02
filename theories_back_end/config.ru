@@ -7,7 +7,7 @@ use Rack::Cors do
 
   # allow all origins in development
   allow do
-    origins ENV["BASE_URL"]
+    origins ["https://your-website.com"]
     resource '*', 
         :headers => :any, 
         :methods => [:get, :post, :delete, :put, :options]
