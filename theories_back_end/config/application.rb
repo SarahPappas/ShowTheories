@@ -27,7 +27,7 @@ module TheoriesBackEnd
     # Skip views, helpers and assets when generating a new resource.
 		config.middleware.use Rack::Cors do
 	    allow do
-	      origins "http://localhost:8000"
+	      origins ENV["BASE_URL"]
 	        resource '*', :headers => :any, :methods => [:get, :post, :options]
 	      end
 	  end
