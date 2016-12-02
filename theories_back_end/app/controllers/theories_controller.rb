@@ -28,8 +28,6 @@ class TheoriesController < ApplicationController
   def upvote
     if @vote.length > 0
       puts @vote.inspect
-      # render json: @vote
-      # render json: @vote, status: :error, location: @vote
       render :json =>{:error => "You've already voted"}.to_json, :status => 400 
     else
       @vote = Vote.new(theory_id: params[:id], ipAddress: request.remote_ip)
@@ -44,17 +42,29 @@ class TheoriesController < ApplicationController
       else
         render json: @vote
         render :json =>{:error => "Save failed"}.to_json, :status => 400 
-        # json: @vote.errors, status: :unprocessable_entity
       end
     end
   end
 
   # PUT /theories/1/upvote
   def downvote
-    if @theory.increment!(:downvotesCount, 1)
-      render json: @theory
+    if @vote.length > 0
+      puts @vote.inspect
+      render :json =>{:error => "You've already voted"}.to_json, :status => 400 
     else
-      render json: @theory.errors, status: :unprocessable_entity
+      @vote = Vote.new(theory_id: params[:id], ipAddress: request.remote_ip)
+      if @vote.save
+        if @theory.increment!(:downvotesCount, 1)
+          puts @theory.inspect
+          render json: @theory
+        else
+          puts @vote.inspect
+          render json: @theory.errors, status: :unprocessable_entity
+        end
+      else
+        render json: @vote
+        render :json =>{:error => "Save failed"}.to_json, :status => 400 
+      end
     end
   end
 
